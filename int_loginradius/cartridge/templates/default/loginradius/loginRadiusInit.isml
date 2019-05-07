@@ -1,0 +1,22 @@
+<script type="text/javascript">
+    var loginRadiusApiKey = '${pdict.loginRadiusApiKey}';
+    var loginRadiusSiteName = '${pdict.loginRadiusSiteName}';
+    var LRObject;
+    var commonOptions = {};
+
+    var lrloadInterval = setInterval(function () {
+        if (typeof LoginRadiusV2 != 'undefined') {
+            clearInterval(lrloadInterval);
+            LoginRadiusV2JsLoaded();
+        }
+    }, 100);
+    function LoginRadiusV2JsLoaded() {
+        // common options for LoginRadius
+        commonOptions.apiKey = loginRadiusApiKey;
+        commonOptions.appName = loginRadiusSiteName;
+        commonOptions.hashTemplate = true;
+
+        LRObject = new LoginRadiusV2(commonOptions);
+    }
+</script>
+

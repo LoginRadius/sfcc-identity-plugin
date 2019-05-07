@@ -1,0 +1,15 @@
+<div class="loginradius-registration">
+        <div class="alert alert-danger invalid-feedback loginradius-error loginradius-error--registration js-loginradius-error-registration"
+            data-lr-email-used-msg="${Resource.msg('loginradius.error.emailused', 'loginradius', null)}"></div>
+
+        <div id="js-loginradius-container-registration"
+            class="loginradius-container--registration js-loginradius-registration js-loginradius-onload"
+            data-lr-generate-sott-url="${URLUtils.https('LoginRadius-GenerateSott')}"
+            data-lr-login-registration-url="${URLUtils.https('LoginRadius-Start')}"
+            data-lr-forwarding-url="${pdict.loginRadiusForwardingURL}"
+            data-lr-enabled="${!empty(pdict.loginRadius.enabled) ? pdict.loginRadius.enabled : false}"
+            data-lr-api-key="${!empty(pdict.loginRadius.key) ? pdict.loginRadius.key : ''}"
+            data-lr-google-recaptcha-site-key="${!empty(pdict.loginRadius.googleRecaptchaSiteKey) ? pdict.loginRadius.googleRecaptchaSiteKey : ''}"
+            data-lr-type="registration">
+        </div>
+</div>

@@ -1,0 +1,68 @@
+<isdecorate template="common/layout/page">
+    <isscript>
+        var assets = require('*/cartridge/scripts/assets.js');
+        assets.addCss('/css/checkout/checkoutLogin.css');
+        assets.addJs('/js/checkoutLogin.js');
+        var GTM = require('int_googletagmanager/cartridge/scripts/helpers/GTM');
+    </isscript>
+
+    <isinclude template="components/modules" />
+
+    <script type="text/javascript">
+        var dataLayerCheckout = <isprint value="${JSON.stringify(GTM.CheckoutStepDataLayerHelper(pdict.order.items.items, GTM.CHECKOUT_LOGIN))}" encoding="off"/>;
+    </script>
+
+    <isif condition="${!empty(pdict.reportingURLs) && pdict.reportingURLs.length}">
+        <isinclude template="reporting/reportingUrls" />
+    </isif>
+
+    <h1 class="title title-display-banner">
+        ${Resource.msg('title.checkout', 'checkout', null)}
+    </h1>
+
+    <div class="container c-login-block">
+        <div class="row justify-content-center">
+
+
+            <div class="col-sm-8 col-lg-4">
+            	<isif condition="${!pdict.autoShip}">
+	                <div class="card c-login-block__card">
+	                    <div class="card-body">
+	                        <div class="c-login-block__sub-headers">${Resource.msg('heading.guest.checkout', 'checkout', null)}</div>
+	                        <iscontentasset aid="instructions-guest-checkout"/>
+	
+	                        <a href="${URLUtils.https('Checkout-Begin')}" class="btn btn-block btn-primary checkout-as-guest">${Resource.msg('button.checkout.as.guest', 'checkout', null)}</a>
+	                    </div>
+	                </div>
+                </isif>
+
+                <div class="card c-login-block__card">
+                    <div class="card-body">
+                        <div class="c-login-block__sub-headers">${Resource.msg('heading.create.account', 'checkout', null)}</div>
+                        <iscontentasset aid="instructions-create-account"/>
+                        
+                        <a href="${URLUtils.https('Login-Show', 'action', 'register')}" class="btn btn-block btn-outline-primary c-login-block__footer">
+                            ${Resource.msg('button.create.customer.account', 'checkout', null)}
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-sm-8 col-lg-4 c-login-block__vertical-line-right">
+                <div class="card card c-login-block__card">
+                    <div class="card-body">
+                        <div class="c-login-block__sub-headers">${Resource.msg('heading.returning.customers', 'checkout', null)}
+                        </div>
+                        <isif condition="${!empty(pdict.loginRadius) && !empty(pdict.loginRadius.enabled) && pdict.loginRadius.enabled}">
+                            <isinclude template="loginradius/login" />
+                        <iselse>
+                            <isinclude template="account/components/loginForm" />
+                            <isinclude template="account/components/oauth" />
+                        </isif>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</isdecorate>

@@ -1,0 +1,57 @@
+<div class="loginradius-login">
+
+    <iscomment>
+        Forgot Password Link
+    </iscomment>
+    <isinclude template="account/components/forgotPassword" />
+    <isinclude template="account/password/requestPasswordResetModal"/>
+
+    <iscomment>
+        Login Section
+    </iscomment>
+    <section>
+        <div class="alert alert-danger invalid-feedback loginradius-error loginradius-error--login js-loginradius-error-login"></div>
+
+        <div id="js-loginradius-container-login"
+            class="loginradius-container--login js-loginradius-onload"
+            data-lr-login-registration-url="${URLUtils.https('LoginRadius-Start')}"
+            data-lr-forwarding-url="${pdict.loginRadiusForwardingURL}"
+            data-lr-type="login"
+            data-lr-enabled="${!empty(pdict.loginRadius.enabled) ? pdict.loginRadius.enabled : false}"
+            data-lr-api-key="${!empty(pdict.loginRadius.key) ? pdict.loginRadius.key : ''}">
+        </div>
+
+    </section>
+
+    <iscomment>
+        Social Login Section.
+    </iscomment>
+    <section>
+        <p class="c-login-block__text-insert">${Resource.msg('loginradius.or', 'loginradius', null)}</p>
+        <div class="alert alert-danger invalid-feedback loginradius-error loginradius-error--social-login js-loginradius-error-sociallogin"></div>
+
+        <div class="loginradius-social-login-interface-container"
+            data-lr-login-registration-url="${URLUtils.https('LoginRadius-Start')}"
+            data-lr-forwarding-url="${pdict.loginRadiusForwardingURL}">
+        </div>
+
+        <div id="js-loginradius-container-sociallogin"
+            class="loginradius-container--socliallogin js-loginradius-onload"
+            data-lr-login-registration-url="${URLUtils.https('LoginRadius-Start')}"
+            data-lr-forwarding-url="${pdict.loginRadiusForwardingURL}"
+            data-lr-type="socialLogin"
+            data-lr-enabled="${!empty(pdict.loginRadius.enabled) ? pdict.loginRadius.enabled : false}"
+            data-lr-api-key="${!empty(pdict.loginRadius.key) ? pdict.loginRadius.key : ''}">
+        </div>
+
+        <iscomment>
+            Custom LoginRadius Interface
+        </iscomment>
+        <script type="text/html" id="loginradiuscustom_tmpl">
+            <a class="lr-provider-label btn btn-block btn-primary btn-outline-primary s-oauth-providers" href="javascript:void(0)" onclick="return LRObject.util.openWindow('<${'#'}= Endpoint ${'#'}>');" title="<${'#'}= Name ${'#'}>" alt="Sign in with <${'#'}=Name${'#'}>">
+            <${'#'}=Name${'#'}>
+        </a>
+        </script>
+    </section>
+
+</div>

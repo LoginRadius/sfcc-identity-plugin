@@ -1,0 +1,42 @@
+
+<div class="alert alert-danger loginradius-error loginradius-error--updateprofile js-loginradius-error-updateprofile"></div>
+
+<form id="js-loginradius-updateprofile"
+    class="js-loginradius-onload"
+    data-lr-account-home-url="${URLUtils.https('Account-Show')}"
+    data-lr-required-field-message="${Resource.msg('loginradius.error.requiredfield', 'loginradius', null)}"
+    data-lr-token-refresh-url="${URLUtils.https('LoginRadius-RefreshToken')}"
+    data-lr-type="updateProfile"
+    data-lr-update-profile-url="${URLUtils.https('LoginRadius-UpdateProfile')}"
+    data-lr-site-name="${!empty(pdict.loginRadius.siteName) ? pdict.loginRadius.siteName : ''}"
+    data-lr-api-key="${!empty(pdict.loginRadius.key) ? pdict.loginRadius.key : ''}"
+    data-lr-enabled="${!empty(pdict.loginRadius.enabled) ? pdict.loginRadius.enabled : false}"
+    data-lr-update-email-url="${URLUtils.https('LoginRadius-UpdateEmail')}">
+
+    <div class="form-group required row">
+        <label for="firstName" class="lr-required">${Resource.msg('loginradius.firstname', 'loginradius', null)}</label>
+        <input type="text" class="form-control" name="firstName" id="firstName" value="${pdict.loginRadiusProfile.FirstName}" required/>
+        <div class="invalid-feedback"></div>
+    </div>
+
+    <div class="form-group required row">
+        <label for="lastName" class="lr-required">${Resource.msg('loginradius.lastname', 'loginradius', null)}</label>
+        <input type="text" class="form-control" name="lastName" id="lastName" value="${pdict.loginRadiusProfile.LastName}" required/>
+        <div class="invalid-feedback"></div>
+    </div>
+
+    <div class="form-group required row">
+        <label for="email" class="lr-required">${Resource.msg('loginradius.email', 'loginradius', null)}</label>
+        <input type="email" class="form-control" name="email" id="email" value="${pdict.loginRadiusProfile.Email}" required/>
+        <div class="invalid-feedback"></div>
+    </div>
+
+    <div class="row">
+        <div class="col loginRadius-form-left">
+            <a href="${URLUtils.url('Account-Show')}" class="btn btn-block btn-outline-primary">${Resource.msg('button.cancel','account',null)}</a>
+        </div>
+        <div class="col loginRadius-form-right">
+            <input class="btn btn-block btn-primary" type="submit" id="submitprofile" value="${Resource.msg('loginradius.saveprofile', 'loginradius', null)}"></input>
+        </div>
+    </div>
+</form>

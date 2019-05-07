@@ -1,0 +1,25 @@
+<isdecorate template="common/layout/page">
+    <isscript>
+        var assets = require('*/cartridge/scripts/assets.js');
+        assets.addCss('/css/account/profile.css');
+        assets.addJs('/js/profile.js');
+    </isscript>
+        <h1 class="title title-display-banner">${Resource.msg('label.profile.edit','account',null)}</h1>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-8 c-account-dashboard__edit-page">
+                <div class="card-body c-account-dashboard__form">
+                    <isif condition="${!empty(pdict.loginRadius) && !empty(pdict.loginRadius.enabled) && pdict.loginRadius.enabled === true}">
+                        <div class="alert alert-danger loginradius-error loginradius-error--profile js-loginradius-error-profile"
+                            data-lr-script-load-error="${Resource.msg('loginradius.error.scriptload', 'loginradius', null)}">
+                        </div>
+                        <isinclude template="loginradius/updateProfile" />
+                    <iselse>
+                        <isinclude template="account/editProfileForm"/>
+                    </isif>
+                </div>
+            </div>
+        </div>
+        <div class="c-account-dashboard__bottom"></div>
+    </div>
+</isdecorate>

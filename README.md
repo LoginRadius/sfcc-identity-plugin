@@ -1,4 +1,4 @@
-# LoginRadius HTML5 SDK
+# LoginRadius Salesforce Commerce Cloud SDK
 
 Customer Identity public repo for the Salesforce Commerce Cloud Cartridge.
 
@@ -13,7 +13,7 @@ LoginRadius is an Identity Management Platform that simplifies user registration
 * [Customer Registration](https://docs.loginradius.com/api/v2/user-registration/user-registration-getting-started) - Everything you need to implement the full LoginRadius Customer Registration system including Social Login.
 
 
-General documentation regarding the HTML5 REST API and related flows can be found on the [LoginRadius API Documentations](http://apidocs.loginradius.com/) site. 
+General documentation regarding the  REST API and related flows can be found on the [LoginRadius API Documentations](http://apidocs.loginradius.com/) site. 
 
 
 ## Contents 
